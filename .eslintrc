@@ -1,0 +1,35 @@
+{
+    "extends": [
+        "eslint:recommended",
+    ],
+    "env": {
+        "browser": true,
+        "es6": true,
+        "jest": true,
+        "node": true
+    },
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "experimentalDecorators": true,
+            "experimentalObjectRestSpread": true,
+            "jsx": true
+        },
+        "ecmaVersion": 2017,
+        "sourceType": "module"
+    },
+    "rules": {
+        "indent": ["error", 4, { "SwitchCase": 1 }],
+        "linebreak-style": ["error", "unix"],
+        "max-len": ["error", {
+            "code": 120,
+            "comments": 120,
+            "ignoreUrls": true
+        }],
+        "no-console": ["error", { "allow": ["debug", "error", "info", "warn"] }],
+        "object-curly-spacing": ["error", "always"],
+        "prefer-template": ["error"],
+        "semi": ["error", "always"],
+        "template-curly-spacing": ["error", "always"]
+    }
+}

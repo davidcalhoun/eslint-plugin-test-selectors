@@ -1,0 +1,31 @@
+{
+  "name": "eslint-plugin-test-selectors",
+  "version": "0.0.0",
+  "description": "Makes sure test DOM attributes (e.g. data-test-id) are added to interactive DOM elements.",
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin",
+    "jsx",
+    "testing"
+  ],
+  "author": "David Calhoun",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "mocha tests --recursive",
+    "lint": "eslint lib"
+  },
+  "dependencies": {
+    "jsx-ast-utils": "^2.0.1",
+    "requireindex": "~1.1.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^9.0.0",
+    "eslint": "~5.4.0",
+    "mocha": "^3.1.2"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "license": "ISC"
+}
