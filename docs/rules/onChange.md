@@ -4,13 +4,13 @@
 
 Examples of **incorrect** code for this rule:
 
-```jsx
+```js
 <Foo onChange={ this.handleNameChange } />
 ```
 
 Examples of **correct** code for this rule:
 
-```jsx
+```js
 <Foo onChange={ this.handleNameChange } data-test-id="name-input" />
 ```
 

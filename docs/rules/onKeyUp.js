@@ -4,13 +4,13 @@
 
 Examples of **incorrect** code for this rule:
 
-```jsx
+```js
 <Foo onKeyUp={ this.handleKeyUp } />
 ```
 
 Examples of **correct** code for this rule:
 
-```jsx
+```js
 <Foo onKeyUp={ this.handleKeyUp } data-test-id="name-selector" />
 ```
 

@@ -4,13 +4,13 @@
 
 Examples of **incorrect** code for this rule:
 
-```jsx
+```js
 <Foo onClick={ this.handleNameClick } />
 ```
 
 Examples of **correct** code for this rule:
 
-```jsx
+```js
 <Foo onClick={ this.handleNameClick } data-test-id="name-selector" />
 ```
 

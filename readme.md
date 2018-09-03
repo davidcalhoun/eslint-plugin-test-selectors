@@ -2,8 +2,8 @@
 
 Enforces that a `data-test-id` attribute is present on interactive DOM elements to help with UI testing.
 
-* ❌ <button>Download</button>
-* ✅ <button data-test-id="download-button">Download</button>
+* ❌ `<button>Download</button>`
+* ✅ `<button data-test-id="download-button">Download</button>`
 
 ## Installation
 
