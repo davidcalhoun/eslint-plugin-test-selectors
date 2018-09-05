@@ -1,4 +1,6 @@
 # eslint-plugin-test-selectors
+[![Build Status](https://travis-ci.org/davidcalhoun/eslint-plugin-test-selectors.svg?branch=master)](https://travis-ci.org/davidcalhoun/eslint-plugin-test-selectors)
+[![Downloads][downloads-image]][https://www.npmjs.com/package/eslint-plugin-test-selectors]
 
 Enforces that a `data-test-id` attribute is present on interactive DOM elements to help with UI testing.
 
