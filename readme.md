@@ -1,6 +1,6 @@
 # eslint-plugin-test-selectors
 [![Build Status](https://travis-ci.org/davidcalhoun/eslint-plugin-test-selectors.svg?branch=master)](https://travis-ci.org/davidcalhoun/eslint-plugin-test-selectors)
-[![Downloads][downloads-image]][https://www.npmjs.com/package/eslint-plugin-test-selectors]
+[![Downloads][downloads-image]][npm-url]
 
 Enforces that a `data-test-id` attribute is present on interactive DOM elements to help with UI testing.
 
@@ -80,3 +80,8 @@ Why `data` attributes and not `id` or `class`?  Check out some of the following:
 * [Decoupling CSS Selectors From Your Tests](https://mixandgo.com/learn/decoupling-css-selectors-from-your-tests)
 * [Test your DOM with Data Attributes](https://medium.com/@colecodes/test-your-dom-with-data-attributes-44fccc43ed4b)
 * [Something Better than IDs for Identifying Elements in Selenium Tests](https://techblog.constantcontact.com/software-development/a-better-way-to-id-elements-in-selenium-tests/)
+
+
+[downloads-image]: https://img.shields.io/npm/dm/eslint-plugin-test-selectors.svg?style=flat-square
+[npm-url]: https://www.npmjs.com/package/eslint-plugin-test-selectors
+[npm-image]: https://img.shields.io/npm/dm/eslint-plugin-test-selectors.svg?style=flat
