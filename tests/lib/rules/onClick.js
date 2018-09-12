@@ -29,6 +29,7 @@ ruleTester.run('onClick', rule, {
         { code: '<div onClick={ this.handleClick } />', errors: [onClickError] },
         { code: '<div onClick={ this.handleClick }>foo</div>', errors: [onClickError] },
         { code: '<Bar onClick={ this.handleClick } />', errors: [onClickError] },
-        { code: '<Bar onClick={ this.handleClick }>foo</Bar>', errors: [onClickError] }
+        { code: '<Bar onClick={ this.handleClick }>foo</Bar>', errors: [onClickError] },
+        { code: '<Bar onClick={ () => handleClick() }>foo</Bar>', errors: [onClickError] }
     ].map(parserOptionsMapper)
 });

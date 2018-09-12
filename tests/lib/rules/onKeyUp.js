@@ -29,6 +29,7 @@ ruleTester.run('onKeyUp', rule, {
         { code: '<div onKeyUp={ this.handleKeyUp } />', errors: [onKeyUpError] },
         { code: '<div onKeyUp={ this.handleKeyUp }>foo</div>', errors: [onKeyUpError] },
         { code: '<Bar onKeyUp={ this.handleKeyUp } />', errors: [onKeyUpError] },
-        { code: '<Bar onKeyUp={ this.handleKeyUp }>foo</Bar>', errors: [onKeyUpError] }
+        { code: '<Bar onKeyUp={ this.handleKeyUp }>foo</Bar>', errors: [onKeyUpError] },
+        { code: '<Bar onKeyUp={ () => handleKeyUp() }>foo</Bar>', errors: [onKeyUpError] }
     ].map(parserOptionsMapper)
 });
