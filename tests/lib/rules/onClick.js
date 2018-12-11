@@ -4,12 +4,15 @@
 const rule = require('../../../lib/rules/onClick');
 const RuleTester = require('eslint').RuleTester;
 const parserOptionsMapper = require('../../parserOptionsMapper');
-const { defaultTestAttribute, errors } = require('../../../lib/constants');
+const {
+    defaults,
+    errors
+} = require('../../../lib/constants');
 const { getError } = require('../../../lib/utils');
 
 const { onClick } = errors;
 
-const onClickError = getError(onClick.message, defaultTestAttribute);
+const onClickError = getError(onClick.message, defaults.testAttribute);
 
 const ruleTester = new RuleTester();
 ruleTester.run('onClick', rule, {
@@ -23,6 +26,8 @@ ruleTester.run('onClick', rule, {
         { code: `<Bar onClick={ () => {} } data-test-id={ bar }>Foo</Bar>` },
         { code: `<Bar onClick={ () => {} } data-test-id="bar">Foo</Bar>` },
         { code: `<Bar onClick={ () => {} } data-test-id="bar" />` },
+        { code: `<Bar onClick={ () => {} } disabled />` },
+        { code: `<Bar onClick={ () => {} } readonly />` }
     ].map(parserOptionsMapper),
 
     invalid: [
@@ -30,6 +35,8 @@ ruleTester.run('onClick', rule, {
         { code: '<div onClick={ this.handleClick }>foo</div>', errors: [onClickError] },
         { code: '<Bar onClick={ this.handleClick } />', errors: [onClickError] },
         { code: '<Bar onClick={ this.handleClick }>foo</Bar>', errors: [onClickError] },
-        { code: '<Bar onClick={ () => handleClick() }>foo</Bar>', errors: [onClickError] }
+        { code: '<Bar onClick={ () => handleClick() }>foo</Bar>', errors: [onClickError] },
+        { code: '<Bar onClick={ () => handleClick() } disabled={ foo }>foo</Bar>', errors: [onClickError] },
+        { code: '<Bar onClick={ () => handleClick() } readonly={ foo }>foo</Bar>', errors: [onClickError] }
     ].map(parserOptionsMapper)
 });

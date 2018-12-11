@@ -47,26 +47,61 @@ If you want to use all the recommended default rules, you can simply add this li
 
 By default, this will run all `Supported Rules` (see below) and emit eslint warnings.  If you want to be more strict, you can emit eslint errors by instead using `plugin:test-selectors/recommendedWithErrors`.
 
-Another option: you can also selectively enable individual rules in the `rules` section of your `.eslintrc` configuration.  For instance, if you only want to enable the `test-selectors/button` rule:
+Another option: you can also selectively enable and disable individual rules in the `rules` section of your `.eslintrc` configuration.  For instance, if you only want to enable the `test-selectors/button` rule, skip the `extends` addition above and simply add the following to the `rules` section of your `.eslintrc` configuration:
 
 ```json
 {
     "rules": {
-        "test-selectors/button": ["error", "never"]
+        "test-selectors/button": ["warn", "always"]
+    }
+}
+```
+
+If you like most of the recommended rules by adding the `extends` option above, but find one in particular to be bothersome, you can simply disable it:
+
+```json
+{
+    "rules": {
+        "test-selectors/anchor": "off"
     }
 }
 ```
 
 Note: see `Supported Rules` below for a full list.
 
-## Custom attributes
+## Custom rule options
+All tests can be customized individually by passing an object with one or more of the following properties.
 
-If you don't want to use the default `data-test-id` attribute, you can selectively override it in each rule definition:
+### testAttribute
+
+The default test attribute is `data-test-id`, but you can override with with whatever you like.  Here is how you would use `data-some-custom-attribute` instead:
 
 ```json
 {
     "rules": {
-        "test-selectors/onChange": ["error", "always", { "testAttribute": "data-some-custom-attribute" }]
+        "test-selectors/onChange": ["warn", "always", { "testAttribute": "data-some-custom-attribute" }]
+    }
+}
+```
+
+### ignoreDisabled
+By default all elements with the `disabled` attribute are ignored, e.g. `<input disabled />`.  If you don't want to ignore this attribute, set `ignoreDisabled` to `false`:
+
+```json
+{
+    "rules": {
+        "test-selectors/onChange": ["warn", "always", { "ignoreDisabled": false }]
+    }
+}
+```
+
+### ignoreReadonly
+By default all elements with the `readonly` attribute are ignored, e.g. `<input readonly />`.  If you don't want to ignore this attribute, set `ignoreReadonly` to `false`:
+
+```json
+{
+    "rules": {
+        "test-selectors/onChange": ["warn", "always", { "ignoreReadonly": false }]
     }
 }
 ```

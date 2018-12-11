@@ -4,12 +4,15 @@
 const rule = require('../../../lib/rules/onKeyUp');
 const RuleTester = require('eslint').RuleTester;
 const parserOptionsMapper = require('../../parserOptionsMapper');
-const { defaultTestAttribute, errors } = require('../../../lib/constants');
+const {
+    defaults,
+    errors
+} = require('../../../lib/constants');
 const { getError } = require('../../../lib/utils');
 
 const { onKeyUp } = errors;
 
-const onKeyUpError = getError(onKeyUp.message, defaultTestAttribute);
+const onKeyUpError = getError(onKeyUp.message, defaults.testAttribute);
 
 const ruleTester = new RuleTester();
 ruleTester.run('onKeyUp', rule, {
@@ -23,6 +26,8 @@ ruleTester.run('onKeyUp', rule, {
         { code: `<Bar onKeyUp={ () => {} } data-test-id={ bar }>Foo</Bar>` },
         { code: `<Bar onKeyUp={ () => {} } data-test-id="bar">Foo</Bar>` },
         { code: `<Bar onKeyUp={ () => {} } data-test-id="bar" />` },
+        { code: `<Bar onKeyUp={ () => {} } disabled />` },
+        { code: `<Bar onKeyUp={ () => {} } readonly />` }
     ].map(parserOptionsMapper),
 
     invalid: [
@@ -30,6 +35,8 @@ ruleTester.run('onKeyUp', rule, {
         { code: '<div onKeyUp={ this.handleKeyUp }>foo</div>', errors: [onKeyUpError] },
         { code: '<Bar onKeyUp={ this.handleKeyUp } />', errors: [onKeyUpError] },
         { code: '<Bar onKeyUp={ this.handleKeyUp }>foo</Bar>', errors: [onKeyUpError] },
-        { code: '<Bar onKeyUp={ () => handleKeyUp() }>foo</Bar>', errors: [onKeyUpError] }
+        { code: '<Bar onKeyUp={ () => handleKeyUp() }>foo</Bar>', errors: [onKeyUpError] },
+        { code: '<Bar onKeyUp={ () => handleKeyUp() } disabled={ bar }>foo</Bar>', errors: [onKeyUpError] },
+        { code: '<Bar onKeyUp={ () => handleKeyUp() } readonly={ bar }>foo</Bar>', errors: [onKeyUpError] }
     ].map(parserOptionsMapper)
 });
