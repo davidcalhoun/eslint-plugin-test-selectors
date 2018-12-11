@@ -8,7 +8,10 @@ Enforces that a `data-test-id` attribute is present on interactive DOM elements 
 * ✅ `<button data-test-id="download-button">Download</button>`
 
 ## Changelog
-* `1.1.0` - refactoring; ignore elements with `disabled` or `readonly` attributes (fixes [#2][i2], [#3][i3], [#4][i4])
+* `1.1.0`
+  * elements with `disabled` and `readonly` attributes are now ignored by default.  See [Custom Rules Options](#custom-rule-options) to customize this behavior. (fixes [#3][i3])
+  * `plugin:test-selectors/recommended` now emits warnings by default instead of errors. For the old stricter behavior which emits errors, folks can use `plugin:test-selectors/recommendedWithErrors` (fixes [#4][i4])
+  * Refactoring and cleanup.  Readme improvements.
 * `1.0.1` - fix bug with inline functions (fixes [#1][i1])
 * `1.0.0` - initial release
 
