@@ -45,6 +45,8 @@ If you want to use all the recommended default rules, you can simply add this li
 }
 ```
 
+By default, this will run all `Supported Rules` (see below) and emit eslint warnings.  If you want to be more strict, you can emit eslint errors by instead using `plugin:test-selectors/recommendedWithErrors`.
+
 Another option: you can also selectively enable individual rules in the `rules` section of your `.eslintrc` configuration.  For instance, if you only want to enable the `test-selectors/button` rule:
 
 ```json
