@@ -7,6 +7,11 @@ Enforces that a `data-test-id` attribute is present on interactive DOM elements 
 * ❌ `<button>Download</button>`
 * ✅ `<button data-test-id="download-button">Download</button>`
 
+## Changelog
+* `1.1.0` - refactoring; ignore elements with `disabled` or `readonly` attributes (fixed #2, #3, #4)
+* `1.0.1` - fix bug with inline functions (#1)
+* `1.0.0` - initial release
+
 ## Installation
 
 You'll first need to install [ESLint](http://eslint.org):
@@ -45,7 +50,7 @@ If you want to use all the recommended default rules, you can simply add this li
 }
 ```
 
-By default, this will run all `Supported Rules` (see below) and emit eslint warnings.  If you want to be more strict, you can emit eslint errors by instead using `plugin:test-selectors/recommendedWithErrors`.
+By default, this will run all [Supported Rules](#supported-rules) and emit eslint warnings.  If you want to be more strict, you can emit eslint errors by instead using `plugin:test-selectors/recommendedWithErrors`.
 
 Another option: you can also selectively enable and disable individual rules in the `rules` section of your `.eslintrc` configuration.  For instance, if you only want to enable the `test-selectors/button` rule, skip the `extends` addition above and simply add the following to the `rules` section of your `.eslintrc` configuration:
 
@@ -67,7 +72,7 @@ If you like most of the recommended rules by adding the `extends` option above, 
 }
 ```
 
-Note: see `Supported Rules` below for a full list.
+Note: see [Supported Rules](#supported-rules) below for a full list.
 
 ## Custom rule options
 All tests can be customized individually by passing an object with one or more of the following properties.
