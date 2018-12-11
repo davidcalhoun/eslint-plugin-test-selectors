@@ -35,19 +35,27 @@ Add `test-selectors` to the plugins section of your `.eslintrc` configuration fi
 }
 ```
 
+If you want to use all the recommended default rules, you can simply add this line to the `extends` section of your `.eslintrc` configuration:
 
-By default, all of these rules are enabled:
+```json
+{
+    "extends": [
+        "plugin:test-selectors/recommended"
+    ]
+}
+```
 
-
-You can selectively disable individual rules in the `rules` section of your `.eslintrc` configuration:
+Another option: you can also selectively enable individual rules in the `rules` section of your `.eslintrc` configuration.  For instance, if you only want to enable the `test-selectors/button` rule:
 
 ```json
 {
     "rules": {
-        "test-selectors/anchor": ["error", "never"]
+        "test-selectors/button": ["error", "never"]
     }
 }
 ```
+
+Note: see `Supported Rules` below for a full list.
 
 ## Custom attributes
 
