@@ -8,8 +8,8 @@ Enforces that a `data-test-id` attribute is present on interactive DOM elements 
 * ✅ `<button data-test-id="download-button">Download</button>`
 
 ## Changelog
-* `1.1.0` - refactoring; ignore elements with `disabled` or `readonly` attributes (fixed #2, #3, #4)
-* `1.0.1` - fix bug with inline functions (#1)
+* `1.1.0` - refactoring; ignore elements with `disabled` or `readonly` attributes (fixes [#2][i2], [#3][i3], [#4][i4])
+* `1.0.1` - fix bug with inline functions (fixes [#1][i1])
 * `1.0.0` - initial release
 
 ## Installation
@@ -135,3 +135,7 @@ Why `data` attributes and not `id` or `class`?  Check out some of the following:
 [downloads-image]: https://img.shields.io/npm/dm/eslint-plugin-test-selectors.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/eslint-plugin-test-selectors
 [npm-image]: https://img.shields.io/npm/dm/eslint-plugin-test-selectors.svg?style=flat
+[i1]: https://github.com/davidcalhoun/eslint-plugin-test-selectors/issues/1
+[i2]: https://github.com/davidcalhoun/eslint-plugin-test-selectors/issues/2
+[i3]: https://github.com/davidcalhoun/eslint-plugin-test-selectors/issues/3
+[i4]: https://github.com/davidcalhoun/eslint-plugin-test-selectors/issues/4
