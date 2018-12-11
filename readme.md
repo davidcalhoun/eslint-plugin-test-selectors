@@ -82,7 +82,7 @@ All tests can be customized individually by passing an object with one or more o
 
 ### testAttribute
 
-The default test attribute is `data-test-id`, but you can override with with whatever you like.  Here is how you would use `data-some-custom-attribute` instead:
+The default test attribute is `data-test-id`, but you can override it with whatever you like.  Here is how you would use `data-some-custom-attribute` instead:
 
 ```json
 {
