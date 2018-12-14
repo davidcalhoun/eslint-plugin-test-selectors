@@ -7,6 +7,8 @@ Enforces that a `data-test-id` attribute is present on interactive DOM elements 
 * ❌ `<button>Download</button>`
 * ✅ `<button data-test-id="download-button">Download</button>`
 
+![Example of eslint-plugin-test-selectors running in Visual Studio Code](https://github.com/davidcalhoun/eslint-plugin-test-selectors/blob/master/vscode-test-selectors-example.png)
+
 ## Changelog
 * `1.1.0`
   * elements with `disabled` and `readonly` attributes are now ignored by default.  See [Custom Rules Options](#custom-rule-options) to customize this behavior. (fixes [#3][i3])
