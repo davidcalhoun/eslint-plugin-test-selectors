@@ -117,6 +117,17 @@ By default all elements with the `readonly` attribute are ignored, e.g. `<input 
 }
 ```
 
+### htmlOnly
+Only supported on `button` rule, this option will exempt React components called Button from the rule.
+
+```json
+{
+    "rules": {
+        "test-selectors/button": ["warn", "always", {"htmlOnly": true}]
+    }
+}
+```
+
 ## Supported Rules
 
 * `test-selectors/anchor`
