@@ -13,7 +13,10 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "mocha tests --recursive",
-    "lint": "eslint lib"
+    "lint": "eslint lib",
+    "patch": "npm version patch && npm publish && git push --tags && git push",
+    "minor": "npm version minor && npm publish && git push --tags && git push",
+    "major": "npm version major && npm publish && git push --tags && git push"
   },
   "dependencies": {
     "jsx-ast-utils": "^2.2.3",
