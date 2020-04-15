@@ -16,7 +16,9 @@
     "lint": "eslint lib",
     "patch": "npm version patch && npm publish && git push --tags && git push",
     "minor": "npm version minor && npm publish && git push --tags && git push",
-    "major": "npm version major && npm publish && git push --tags && git push"
+    "major": "npm version major && npm publish && git push --tags && git push",
+    "npm-publish": "npm publish && git push && git push --tags",
+    "bump": "! npm outdated && npm update && npm audit fix"
   },
   "dependencies": {
     "jsx-ast-utils": "^2.2.3",
