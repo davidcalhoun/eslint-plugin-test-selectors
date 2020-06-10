@@ -21,13 +21,13 @@
     "bump": "! npm outdated && npm update && npm audit fix || echo 'Package up to date'"
   },
   "dependencies": {
-    "jsx-ast-utils": "^2.2.3",
+    "jsx-ast-utils": "^2.3.0",
     "requireindex": "^1.2.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
-    "eslint": "^6.8.0",
-    "mocha": "^7.1.2"
+    "eslint": "^7.2.0",
+    "mocha": "^7.2.0"
   },
   "engines": {
     "node": ">=0.10.0"
