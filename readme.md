@@ -20,7 +20,7 @@ Enforces that a `data-test-id` attribute is present on interactive DOM elements 
 
 ## Installation
 
-You'll first need to install [ESLint](http://eslint.org):
+You'll first need to install [ESLint](http://eslint.org), which requires [Node.js](https://nodejs.org) (note that `eslint-plugin-test-selectors` requires Node.js 10+):
 
 ```
 $ npm i eslint --save-dev
