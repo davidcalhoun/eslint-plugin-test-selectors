@@ -1,6 +1,9 @@
 language: node_js
 node_js:
   - "node" # the latest stable Node release
+  - "14"
+  - "13"
+  - "12"
+  - "11"
   - "10"
   - "9"
-  - "8"
