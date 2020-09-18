@@ -25,7 +25,10 @@ ruleTester.run('anchor', rule, {
         { code: `<Foo href="bar" data-test-id={ bar } />` },
         { code: `<Foo href="bar" data-test-id={ bar }>Bar</Foo>` },
         { code: `<Foo href="bar" disabled>Bar</Foo>` },
-        { code: `<Foo href="bar" readonly>Bar</Foo>` }
+        { code: `<Foo href="bar" readonly>Bar</Foo>` },
+        { code: `<link href="example.com" />` },
+        { code: `<area href="example.com" />` },
+        { code: `<base href="example.com" />` }
     ].map(parserOptionsMapper),
 
     invalid: [
@@ -36,6 +39,7 @@ ruleTester.run('anchor', rule, {
         { code: '<a />', errors: [anchorError] },
         { code: '<Foo href="bar" />', errors: [anchorError] },
         { code: '<Foo href="bar" disabled={ bar } />', errors: [anchorError] },
-        { code: '<Foo href="bar" readonly={ bar } />', errors: [anchorError] }
+        { code: '<Foo href="bar" readonly={ bar } />', errors: [anchorError] },
+        { code: '<Link href="example.com" />', errors: [anchorError] },
     ].map(parserOptionsMapper)
 });
