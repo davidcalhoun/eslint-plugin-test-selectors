@@ -22,12 +22,14 @@
   },
   "dependencies": {
     "jsx-ast-utils": "^3.1.0",
+    "nanoid": "^3.1.18",
     "requireindex": "^1.2.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "eslint": "^7.12.0",
-    "mocha": "^8.2.0"
+    "mocha": "^8.2.0",
+    "mock-require": "^3.0.3"
   },
   "engines": {
     "node": ">=0.10.0"
