@@ -15,11 +15,10 @@ const { onClick } = errors;
 
 const onClickError = getError(onClick.message, defaults.testAttribute);
 
-
 nanoidMock('nanoid', {
-  nanoid: function () {
-    return 'AbYK0YPm2OWYiMaFPKLbp';
-  },
+    nanoid: function () {
+        return 'AbYK0YPm2OWYiMaFPKLbp';
+    },
 });
 
 const id = require('nanoid');
@@ -45,37 +44,43 @@ ruleTester.run('onClick', rule, {
         {
             code: '<div onClick={ this.handleClick } />',
             errors: [onClickError],
-            output: `<div data-test-id="${suggestedId}" onClick={ this.handleClick } />`,
+            output: `<div data-test-id="${ suggestedId }" onClick={ this.handleClick } />`,
         },
         {
             code: '<div onClick={ this.handleClick }>foo</div>',
             errors: [onClickError],
-            output: `<div data-test-id="${suggestedId}" onClick={ this.handleClick }>foo</div>`,
+            output: `<div data-test-id="${ suggestedId }" onClick={ this.handleClick }>foo</div>`,
         },
         {
             code: '<Bar onClick={ this.handleClick } />',
             errors: [onClickError],
-            output: `<Bar data-test-id="${suggestedId}" onClick={ this.handleClick } />`,
+            output: `<Bar data-test-id="${ suggestedId }" onClick={ this.handleClick } />`,
         },
         {
             code: '<Bar onClick={ this.handleClick }>foo</Bar>',
             errors: [onClickError],
-            output: `<Bar data-test-id="${suggestedId}" onClick={ this.handleClick }>foo</Bar>`,
+            output: `<Bar data-test-id="${ suggestedId }" onClick={ this.handleClick }>foo</Bar>`,
         },
         {
             code: '<Bar onClick={ () => handleClick() }>foo</Bar>',
             errors: [onClickError],
-            output: `<Bar data-test-id="${suggestedId}" onClick={ () => handleClick() }>foo</Bar>`,
+            output: `<Bar data-test-id="${ suggestedId }" onClick={ () => handleClick() }>foo</Bar>`,
         },
         {
             code: '<Bar onClick={ () => handleClick() } disabled={ foo }>foo</Bar>',
             errors: [onClickError],
-            output: `<Bar data-test-id="${suggestedId}" onClick={ () => handleClick() } disabled={ foo }>foo</Bar>`,
+            output: `<Bar data-test-id="${ suggestedId }" onClick={ () => handleClick() } disabled={ foo }>foo</Bar>`,
         },
         {
             code: '<Bar onClick={ () => handleClick() } readonly={ foo }>foo</Bar>',
             errors: [onClickError],
-            output: `<Bar data-test-id="${suggestedId}" onClick={ () => handleClick() } readonly={ foo }>foo</Bar>`,
+            output: `<Bar data-test-id="${ suggestedId }" onClick={ () => handleClick() } readonly={ foo }>foo</Bar>`,
+        },
+        {
+            code: '<Foo.Bar onClick={ () => handleClick() } readonly={ foo }>foo</Foo.Bar>',
+            errors: [onClickError],
+            output:
+              `<Foo.Bar data-test-id="${ suggestedId }" onClick={ () => handleClick() } readonly={ foo }>foo</Foo.Bar>`,
         },
     ].map(parserOptionsMapper)
 });
