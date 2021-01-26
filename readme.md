@@ -11,6 +11,7 @@ Enforces that a `data-test-id` attribute is present on interactive DOM elements 
 ![Example of eslint-plugin-test-selectors running in Visual Studio Code](https://github.com/davidcalhoun/eslint-plugin-test-selectors/blob/master/vscode-test-selectors-example.png)
 
 ## Changelog
+* `1.3.0` - Add auto-fix capability to `onClick` (thank you @bkonuwa and @pixelbandito).  ([#8](https://github.com/davidcalhoun/eslint-plugin-test-selectors/pull/8))
 * `1.1.0`
   * elements with `disabled` and `readonly` attributes are now ignored by default.  See [Custom Rules Options](#custom-rule-options) to customize this behavior. (fixes [#3][i3])
   * `plugin:test-selectors/recommended` now emits warnings by default instead of errors. For the old stricter behavior which emits errors, folks can use `plugin:test-selectors/recommendedWithErrors` (fixes [#4][i4])
