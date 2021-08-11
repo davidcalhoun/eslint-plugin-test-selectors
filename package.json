@@ -19,7 +19,7 @@
     "minor": "npm version minor && npm publish && git push --tags && git push",
     "major": "npm version major && npm publish && git push --tags && git push",
     "npm-publish": "npm publish && git push && git push --tags",
-    "bump": "! npm outdated && npm update && npm audit fix && npm test || echo 'Package up to date'"
+    "bump": "npm outdated && npm update && npm audit fix && npm test || echo 'Package up to date'"
   },
   "dependencies": {
     "jsx-ast-utils": "^3.2.0",
