@@ -138,6 +138,7 @@ Only supported on `button` rule, this option will exempt React components called
 * `test-selectors/onClick`
 * `test-selectors/onKeyDown`
 * `test-selectors/onKeyUp`
+* `test-selectors/onSubmit`
 
 ## Further Reading
 
