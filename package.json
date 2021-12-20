@@ -22,14 +22,14 @@
     "bump": "npm outdated && npm update && npm audit fix && npm test || echo 'Package up to date'"
   },
   "dependencies": {
-    "jsx-ast-utils": "^3.2.0",
-    "nanoid": "^3.1.18",
+    "jsx-ast-utils": "^3.2.1",
+    "nanoid": "^3.1.30",
     "requireindex": "^1.2.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.16.0",
-    "mocha": "^8.2.1",
+    "eslint": "^8.5.0",
+    "mocha": "^9.1.3",
     "mock-require": "^3.0.3"
   },
   "engines": {
