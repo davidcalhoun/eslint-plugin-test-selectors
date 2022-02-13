@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-test-selectors",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Makes sure test DOM attributes (e.g. data-test-id) are added to interactive DOM elements.",
   "homepage": "https://github.com/davidcalhoun/eslint-plugin-test-selectors#readme",
   "keywords": [
