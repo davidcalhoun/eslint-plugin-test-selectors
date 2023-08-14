@@ -101,6 +101,21 @@ The default test attribute expected is `data-test-id`, but you can override it w
 }
 ```
 
+Note: You can also pass multiple attributes 
+
+```json
+{
+  "rules": {
+    "test-selectors/onChange": [
+      "warn",
+      "always",
+      { "testAttribute": ["data-testid", "testId"] }
+    ]
+  }
+}
+```
+
+
 ### ignoreDisabled
 
 By default all elements with the `disabled` attribute are ignored, e.g. `<input disabled />`. If you don't want to ignore this attribute, set `ignoreDisabled` to `false`:
@@ -147,6 +162,8 @@ Only supported on `button` rule, this option will exempt React components called
 - `test-selectors/onKeyDown`
 - `test-selectors/onKeyUp`
 - `test-selectors/onSubmit`
+
+
 
 ## Further Reading
 
