@@ -9,7 +9,7 @@ Enforces that a `data-test-id` attribute is present on interactive DOM elements 
 
 ### Example of eslint-plugin-test-selectors running in Visual Studio Code:
 
-![Example of eslint-plugin-test-selectors running in Visual Studio Code](https://github.com/davidcalhoun/eslint-plugin-test-selectors/blob/master/vscode-test-selectors-example.png)
+![Example of eslint-plugin-test-selectors running in Visual Studio Code](vscode-test-selectors-example.png)
 
 ## Selected changelog
 
