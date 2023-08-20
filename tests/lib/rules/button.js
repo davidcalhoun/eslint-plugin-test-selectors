@@ -4,10 +4,7 @@
 const rule = require('../../../lib/rules/button');
 const RuleTester = require('eslint').RuleTester;
 const parserOptionsMapper = require('../../parserOptionsMapper');
-const {
-    defaults,
-    errors
-} = require('../../../lib/constants');
+const { defaults, errors } = require('../../../lib/constants');
 const { getError } = require('../../../lib/utils');
 
 const { button } = errors;
@@ -27,7 +24,9 @@ ruleTester.run('button', rule, {
         { code: `<DownloadButton data-test-id='foo' />` },
         { code: `<button disabled />` },
         { code: `<button readonly />` },
-        { code: `<Button>Foo</Button>`, options: ["warn", {htmlOnly: true}] }
+        { code: `<Button>Foo</Button>`, options: ['warn', { htmlOnly: true }] },
+        { code: `<button testId={ bar } />`, options: ['always', { testAttribute: 'testId' }] },
+        { code: `<button data-testid={ bar } />`, options: ['always', { testAttribute: ['testId', 'data-testid'] }] }
     ].map(parserOptionsMapper),
 
     invalid: [
@@ -42,6 +41,11 @@ ruleTester.run('button', rule, {
         { code: '<ButtonContainer />', errors: [buttonError] },
         { code: '<DownloadButton />', errors: [buttonError] },
         { code: '<button disabled={ foo } />', errors: [buttonError] },
-        { code: '<button readonly={ foo } />', errors: [buttonError] }
+        { code: '<button readonly={ foo } />', errors: [buttonError] },
+        {
+            code: `<button data-test-id={ bar } />`,
+            options: ['always', { testAttribute: ['testId', 'data-testid'] }],
+            errors: [getError(button.message, ['testId', 'data-testid'])]
+        }
     ].map(parserOptionsMapper)
 });
