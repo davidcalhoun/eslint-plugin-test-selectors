@@ -37,7 +37,9 @@ ruleTester.run('onClick', rule, {
         { code: `<Bar onClick={ () => {} } data-test-id="bar">Foo</Bar>` },
         { code: `<Bar onClick={ () => {} } data-test-id="bar" />` },
         { code: `<Bar onClick={ () => {} } disabled />` },
-        { code: `<Bar onClick={ () => {} } readonly />` }
+        { code: `<Bar onClick={ () => {} } readonly />` },
+        { code: `<div onClick={ this.handleClick } testId={ bar }>Foo</div>`, options: ["always", {"testAttribute": "testId"}] },
+        { code: `<div onClick={ this.handleClick } data-testid={ bar }>Foo</div>`, options: ["always", {"testAttribute": ["testId", "data-testid"]}] }
     ].map(parserOptionsMapper),
 
     invalid: [
@@ -82,5 +84,10 @@ ruleTester.run('onClick', rule, {
             output:
               `<Foo.Bar data-test-id="${ suggestedId }" onClick={ () => handleClick() } readonly={ foo }>foo</Foo.Bar>`,
         },
+        {
+            code: `<div onClick={ this.handleClick } data-test-id={ bar }>Foo</div>`,
+            options: ["always", {"testAttribute": ["testId", "data-testid"]}],
+            errors: [getError(onClick.message, ["testId", "data-testid"])],
+            output: `<div testId="${ suggestedId }" onClick={ this.handleClick } data-test-id={ bar }>Foo</div>` }
     ].map(parserOptionsMapper)
 });

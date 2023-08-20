@@ -27,7 +27,9 @@ ruleTester.run('onKeyUp', rule, {
         { code: `<Bar onKeyUp={ () => {} } data-test-id="bar">Foo</Bar>` },
         { code: `<Bar onKeyUp={ () => {} } data-test-id="bar" />` },
         { code: `<Bar onKeyUp={ () => {} } disabled />` },
-        { code: `<Bar onKeyUp={ () => {} } readonly />` }
+        { code: `<Bar onKeyUp={ () => {} } readonly />` },
+        { code: `<div onKeyUp={ this.handleKeyUp } testId={ bar }>Foo</div>`, options: ["always", {"testAttribute": "testId"}] },
+        { code: `<div onKeyUp={ this.handleKeyUp } data-testid={ bar }>Foo</div>`, options: ["always", {"testAttribute": ["testId", "data-testid"]}] }
     ].map(parserOptionsMapper),
 
     invalid: [
@@ -37,6 +39,7 @@ ruleTester.run('onKeyUp', rule, {
         { code: '<Bar onKeyUp={ this.handleKeyUp }>foo</Bar>', errors: [onKeyUpError] },
         { code: '<Bar onKeyUp={ () => handleKeyUp() }>foo</Bar>', errors: [onKeyUpError] },
         { code: '<Bar onKeyUp={ () => handleKeyUp() } disabled={ bar }>foo</Bar>', errors: [onKeyUpError] },
-        { code: '<Bar onKeyUp={ () => handleKeyUp() } readonly={ bar }>foo</Bar>', errors: [onKeyUpError] }
+        { code: '<Bar onKeyUp={ () => handleKeyUp() } readonly={ bar }>foo</Bar>', errors: [onKeyUpError] },
+        { code: `<div onKeyUp={ this.handleKeyUp } data-test-id={ bar }>Foo</div>`, options: ["always", {"testAttribute": ["testId", "data-testid"]}], errors: [getError(onKeyUp.message, ["testId", "data-testid"])] }
     ].map(parserOptionsMapper)
 });
