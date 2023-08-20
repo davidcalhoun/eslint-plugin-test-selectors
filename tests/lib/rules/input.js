@@ -4,10 +4,7 @@
 const rule = require('../../../lib/rules/input');
 const RuleTester = require('eslint').RuleTester;
 const parserOptionsMapper = require('../../parserOptionsMapper');
-const {
-    defaults,
-    errors
-} = require('../../../lib/constants');
+const { defaults, errors } = require('../../../lib/constants');
 const { getError } = require('../../../lib/utils');
 
 const { input } = errors;
@@ -22,8 +19,11 @@ ruleTester.run('input', rule, {
         { code: `<input data-test-id='foo' />` },
         { code: `<input disabled />` },
         { code: `<input readonly />` },
-        { code: `<input testId={ bar }>Foo</input>`, options: ["always", {"testAttribute": "testId"}] },
-        { code: `<input data-testid={ bar }>Foo</input>`, options: ["always", {"testAttribute": ["testId", "data-testid"]}] }
+        { code: `<input testId={ bar }>Foo</input>`, options: ['always', { testAttribute: 'testId' }] },
+        {
+            code: `<input data-testid={ bar }>Foo</input>`,
+            options: ['always', { testAttribute: ['testId', 'data-testid'] }]
+        }
     ].map(parserOptionsMapper),
 
     invalid: [
@@ -34,6 +34,10 @@ ruleTester.run('input', rule, {
         { code: '<input />', errors: [inputError] },
         { code: '<input disabled={ foo } />', errors: [inputError] },
         { code: '<input readonly={ foo } />', errors: [inputError] },
-        { code: `<input data-test-id={ bar }>Foo</input>`, options: ["always", {"testAttribute": ["testId", "data-testid"]}], errors: [getError(input.message, ["testId", "data-testid"])] }
+        {
+            code: `<input data-test-id={ bar }>Foo</input>`,
+            options: ['always', { testAttribute: ['testId', 'data-testid'] }],
+            errors: [getError(input.message, ['testId', 'data-testid'])]
+        }
     ].map(parserOptionsMapper)
 });

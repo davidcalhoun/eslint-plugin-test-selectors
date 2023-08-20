@@ -4,10 +4,7 @@
 const rule = require('../../../lib/rules/onChange');
 const RuleTester = require('eslint').RuleTester;
 const parserOptionsMapper = require('../../parserOptionsMapper');
-const {
-    defaults,
-    errors
-} = require('../../../lib/constants');
+const { defaults, errors } = require('../../../lib/constants');
 const { getError } = require('../../../lib/utils');
 
 const { onChange } = errors;
@@ -28,8 +25,14 @@ ruleTester.run('onChange', rule, {
         { code: `<Bar onChange={ () => {} } data-test-id="bar" />` },
         { code: `<Bar onChange={ () => {} } disabled />` },
         { code: `<Bar onChange={ () => {} } readonly />` },
-        { code: `<div onChange={ this.handleChange } testId={ bar }>Foo</div>`, options: ["always", {"testAttribute": "testId"}] },
-        { code: `<div onChange={ this.handleChange } data-testid={ bar }>Foo</div>`, options: ["always", {"testAttribute": ["testId", "data-testid"]}] }
+        {
+            code: `<div onChange={ this.handleChange } testId={ bar }>Foo</div>`,
+            options: ['always', { testAttribute: 'testId' }]
+        },
+        {
+            code: `<div onChange={ this.handleChange } data-testid={ bar }>Foo</div>`,
+            options: ['always', { testAttribute: ['testId', 'data-testid'] }]
+        }
     ].map(parserOptionsMapper),
 
     invalid: [
@@ -40,6 +43,10 @@ ruleTester.run('onChange', rule, {
         { code: '<Bar onChange={ () => handleChange() }>foo</Bar>', errors: [onChangeError] },
         { code: '<Bar onChange={ () => handleChange() } disabled={ foo }>foo</Bar>', errors: [onChangeError] },
         { code: '<Bar onChange={ () => handleChange() } readonly={ foo }>foo</Bar>', errors: [onChangeError] },
-        { code: `<div onChange={ this.handleChange } data-test-id={ bar }>Foo</div>`, options: ["always", {"testAttribute": ["testId", "data-testid"]}], errors: [getError(onChange.message, ["testId", "data-testid"])] }
+        {
+            code: `<div onChange={ this.handleChange } data-test-id={ bar }>Foo</div>`,
+            options: ['always', { testAttribute: ['testId', 'data-testid'] }],
+            errors: [getError(onChange.message, ['testId', 'data-testid'])]
+        }
     ].map(parserOptionsMapper)
 });

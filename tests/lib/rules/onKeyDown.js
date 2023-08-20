@@ -4,10 +4,7 @@
 const rule = require('../../../lib/rules/onKeyDown');
 const RuleTester = require('eslint').RuleTester;
 const parserOptionsMapper = require('../../parserOptionsMapper');
-const {
-    defaults,
-    errors
-} = require('../../../lib/constants');
+const { defaults, errors } = require('../../../lib/constants');
 const { getError } = require('../../../lib/utils');
 
 const { onKeyDown } = errors;
@@ -28,8 +25,14 @@ ruleTester.run('onKeyDown', rule, {
         { code: `<Bar onKeyDown={ () => {} } data-test-id="bar" />` },
         { code: `<Bar onKeyDown={ () => {} } disabled />` },
         { code: `<Bar onKeyDown={ () => {} } readonly />` },
-        { code: `<div onKeyDown={ this.handleKeyDown } testId={ bar }>Foo</div>`, options: ["always", {"testAttribute": "testId"}] },
-        { code: `<div onKeyDown={ this.handleKeyDown } data-testid={ bar }>Foo</div>`, options: ["always", {"testAttribute": ["testId", "data-testid"]}] }
+        {
+            code: `<div onKeyDown={ this.handleKeyDown } testId={ bar }>Foo</div>`,
+            options: ['always', { testAttribute: 'testId' }]
+        },
+        {
+            code: `<div onKeyDown={ this.handleKeyDown } data-testid={ bar }>Foo</div>`,
+            options: ['always', { testAttribute: ['testId', 'data-testid'] }]
+        }
     ].map(parserOptionsMapper),
 
     invalid: [
@@ -40,6 +43,10 @@ ruleTester.run('onKeyDown', rule, {
         { code: '<Bar onKeyDown={ () => handleKeyDown() }>foo</Bar>', errors: [onKeyDownError] },
         { code: '<Bar onKeyDown={ () => handleKeyDown() } disabled={ bar }>foo</Bar>', errors: [onKeyDownError] },
         { code: '<Bar onKeyDown={ () => handleKeyDown() } readonly={ bar }>foo</Bar>', errors: [onKeyDownError] },
-        { code: `<div onKeyDown={ this.handleKeyDown } data-test-id={ bar }>Foo</div>`, options: ["always", {"testAttribute": ["testId", "data-testid"]}], errors: [getError(onKeyDown.message, ["testId", "data-testid"])] }
+        {
+            code: `<div onKeyDown={ this.handleKeyDown } data-test-id={ bar }>Foo</div>`,
+            options: ['always', { testAttribute: ['testId', 'data-testid'] }],
+            errors: [getError(onKeyDown.message, ['testId', 'data-testid'])]
+        }
     ].map(parserOptionsMapper)
 });

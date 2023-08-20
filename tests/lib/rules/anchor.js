@@ -4,10 +4,7 @@
 const rule = require('../../../lib/rules/anchor');
 const RuleTester = require('eslint').RuleTester;
 const parserOptionsMapper = require('../../parserOptionsMapper');
-const {
-    defaults,
-    errors
-} = require('../../../lib/constants');
+const { defaults, errors } = require('../../../lib/constants');
 const { getError } = require('../../../lib/utils');
 
 const { anchor } = errors;
@@ -29,8 +26,8 @@ ruleTester.run('anchor', rule, {
         { code: `<link href="example.com" />` },
         { code: `<area href="example.com" />` },
         { code: `<base href="example.com" />` },
-        { code: `<a testId={ bar }>Foo</a>`, options: ["always", {"testAttribute": "testId"}] },
-        { code: `<a data-testid={ bar }>Foo</a>`, options: ["always", {"testAttribute": ["testId", "data-testid"]}] }
+        { code: `<a testId={ bar }>Foo</a>`, options: ['always', { testAttribute: 'testId' }] },
+        { code: `<a data-testid={ bar }>Foo</a>`, options: ['always', { testAttribute: ['testId', 'data-testid'] }] }
     ].map(parserOptionsMapper),
 
     invalid: [
@@ -43,6 +40,10 @@ ruleTester.run('anchor', rule, {
         { code: '<Foo href="bar" disabled={ bar } />', errors: [anchorError] },
         { code: '<Foo href="bar" readonly={ bar } />', errors: [anchorError] },
         { code: '<Link href="example.com" />', errors: [anchorError] },
-        { code: `<a data-test-id={ bar }>Foo</a>`, options: ["always", {"testAttribute": ["testId", "data-testid"]}], errors: [getError(anchor.message, ["testId", "data-testid"])] }
+        {
+            code: `<a data-test-id={ bar }>Foo</a>`,
+            options: ['always', { testAttribute: ['testId', 'data-testid'] }],
+            errors: [getError(anchor.message, ['testId', 'data-testid'])]
+        }
     ].map(parserOptionsMapper)
 });

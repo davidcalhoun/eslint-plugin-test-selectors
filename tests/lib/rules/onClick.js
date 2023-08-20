@@ -4,10 +4,7 @@
 const rule = require('../../../lib/rules/onClick');
 const RuleTester = require('eslint').RuleTester;
 const parserOptionsMapper = require('../../parserOptionsMapper');
-const {
-    defaults,
-    errors
-} = require('../../../lib/constants');
+const { defaults, errors } = require('../../../lib/constants');
 const { getError } = require('../../../lib/utils');
 const nanoidMock = require('mock-require');
 
@@ -18,7 +15,7 @@ const onClickError = getError(onClick.message, defaults.testAttribute);
 nanoidMock('nanoid', {
     nanoid: function () {
         return 'AbYK0YPm2OWYiMaFPKLbp';
-    },
+    }
 });
 
 const id = require('nanoid');
@@ -38,56 +35,62 @@ ruleTester.run('onClick', rule, {
         { code: `<Bar onClick={ () => {} } data-test-id="bar" />` },
         { code: `<Bar onClick={ () => {} } disabled />` },
         { code: `<Bar onClick={ () => {} } readonly />` },
-        { code: `<div onClick={ this.handleClick } testId={ bar }>Foo</div>`, options: ["always", {"testAttribute": "testId"}] },
-        { code: `<div onClick={ this.handleClick } data-testid={ bar }>Foo</div>`, options: ["always", {"testAttribute": ["testId", "data-testid"]}] }
+        {
+            code: `<div onClick={ this.handleClick } testId={ bar }>Foo</div>`,
+            options: ['always', { testAttribute: 'testId' }]
+        },
+        {
+            code: `<div onClick={ this.handleClick } data-testid={ bar }>Foo</div>`,
+            options: ['always', { testAttribute: ['testId', 'data-testid'] }]
+        }
     ].map(parserOptionsMapper),
 
     invalid: [
         {
             code: '<div onClick={ this.handleClick } />',
             errors: [onClickError],
-            output: `<div data-test-id="${ suggestedId }" onClick={ this.handleClick } />`,
+            output: `<div data-test-id="${suggestedId}" onClick={ this.handleClick } />`
         },
         {
             code: '<div onClick={ this.handleClick }>foo</div>',
             errors: [onClickError],
-            output: `<div data-test-id="${ suggestedId }" onClick={ this.handleClick }>foo</div>`,
+            output: `<div data-test-id="${suggestedId}" onClick={ this.handleClick }>foo</div>`
         },
         {
             code: '<Bar onClick={ this.handleClick } />',
             errors: [onClickError],
-            output: `<Bar data-test-id="${ suggestedId }" onClick={ this.handleClick } />`,
+            output: `<Bar data-test-id="${suggestedId}" onClick={ this.handleClick } />`
         },
         {
             code: '<Bar onClick={ this.handleClick }>foo</Bar>',
             errors: [onClickError],
-            output: `<Bar data-test-id="${ suggestedId }" onClick={ this.handleClick }>foo</Bar>`,
+            output: `<Bar data-test-id="${suggestedId}" onClick={ this.handleClick }>foo</Bar>`
         },
         {
             code: '<Bar onClick={ () => handleClick() }>foo</Bar>',
             errors: [onClickError],
-            output: `<Bar data-test-id="${ suggestedId }" onClick={ () => handleClick() }>foo</Bar>`,
+            output: `<Bar data-test-id="${suggestedId}" onClick={ () => handleClick() }>foo</Bar>`
         },
         {
             code: '<Bar onClick={ () => handleClick() } disabled={ foo }>foo</Bar>',
             errors: [onClickError],
-            output: `<Bar data-test-id="${ suggestedId }" onClick={ () => handleClick() } disabled={ foo }>foo</Bar>`,
+            output: `<Bar data-test-id="${suggestedId}" onClick={ () => handleClick() } disabled={ foo }>foo</Bar>`
         },
         {
             code: '<Bar onClick={ () => handleClick() } readonly={ foo }>foo</Bar>',
             errors: [onClickError],
-            output: `<Bar data-test-id="${ suggestedId }" onClick={ () => handleClick() } readonly={ foo }>foo</Bar>`,
+            output: `<Bar data-test-id="${suggestedId}" onClick={ () => handleClick() } readonly={ foo }>foo</Bar>`
         },
         {
             code: '<Foo.Bar onClick={ () => handleClick() } readonly={ foo }>foo</Foo.Bar>',
             errors: [onClickError],
-            output:
-              `<Foo.Bar data-test-id="${ suggestedId }" onClick={ () => handleClick() } readonly={ foo }>foo</Foo.Bar>`,
+            output: `<Foo.Bar data-test-id="${suggestedId}" onClick={ () => handleClick() } readonly={ foo }>foo</Foo.Bar>`
         },
         {
             code: `<div onClick={ this.handleClick } data-test-id={ bar }>Foo</div>`,
-            options: ["always", {"testAttribute": ["testId", "data-testid"]}],
-            errors: [getError(onClick.message, ["testId", "data-testid"])],
-            output: `<div testId="${ suggestedId }" onClick={ this.handleClick } data-test-id={ bar }>Foo</div>` }
+            options: ['always', { testAttribute: ['testId', 'data-testid'] }],
+            errors: [getError(onClick.message, ['testId', 'data-testid'])],
+            output: `<div testId="${suggestedId}" onClick={ this.handleClick } data-test-id={ bar }>Foo</div>`
+        }
     ].map(parserOptionsMapper)
 });
