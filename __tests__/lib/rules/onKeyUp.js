@@ -3,7 +3,7 @@
  */
 const rule = require('../../../lib/rules/onKeyUp');
 const RuleTester = require('eslint').RuleTester;
-const parserOptionsMapper = require('../../parserOptionsMapper');
+const parserOptionsMapper = require('../../../testHelpers/parserOptionsMapper.helper');
 const { defaults, errors } = require('../../../lib/constants');
 const { getError } = require('../../../lib/utils');
 

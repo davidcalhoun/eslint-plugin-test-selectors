@@ -13,7 +13,7 @@
   "author": "David Calhoun",
   "main": "lib/index.js",
   "scripts": {
-    "test": "mocha tests --recursive",
+    "test": "node --experimental-vm-modules node_modules/.bin/jest",
     "lint": "eslint lib",
     "patch": "npm version patch && npm publish && git push --tags && git push",
     "minor": "npm version minor && npm publish && git push --tags && git push",
@@ -29,7 +29,7 @@
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "eslint": "^8.9.0",
-    "mocha": "^9.1.3",
+    "jest": "^30.2.0",
     "mock-require": "^3.0.3"
   },
   "engines": {

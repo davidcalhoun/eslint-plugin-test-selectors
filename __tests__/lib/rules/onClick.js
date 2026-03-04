@@ -3,20 +3,17 @@
  */
 const rule = require('../../../lib/rules/onClick');
 const RuleTester = require('eslint').RuleTester;
-const parserOptionsMapper = require('../../parserOptionsMapper');
+const parserOptionsMapper = require('../../../testHelpers/parserOptionsMapper.helper');
 const { defaults, errors } = require('../../../lib/constants');
 const { getError } = require('../../../lib/utils');
-const nanoidMock = require('mock-require');
 
 const { onClick } = errors;
 
 const onClickError = getError(onClick.message, defaults.testAttribute);
 
-nanoidMock('nanoid', {
-    nanoid: function () {
-        return 'AbYK0YPm2OWYiMaFPKLbp';
-    }
-});
+jest.mock('nanoid', () => ({
+  nanoid: () => 'AbYK0YPm2OWYiMaFPKLbp',
+}));
 
 const id = require('nanoid');
 const suggestedId = id.nanoid();
